@@ -8,7 +8,10 @@ package name.zuoguoqing.singleton;
  *
  */
 public class LazyLoadImprove {
-    private static Object instance;
+    private static LazyLoadImprove instance;
+    private LazyLoadImprove() {
+        
+    }
 
     // low efficiency
     synchronized public static Object getInstance() {
@@ -22,7 +25,7 @@ public class LazyLoadImprove {
             }
             
             // initialize 'instance'
-            instance = new Object();
+            instance = new LazyLoadImprove();
         }
 
         return instance;

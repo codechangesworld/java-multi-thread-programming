@@ -8,7 +8,20 @@ package name.zuoguoqing.singleton;
  *
  */
 public class InstantLoad {
-    private static Object instance = new Object();
+    @SuppressWarnings("unused")
+    private int id;
+    private String name;
+    
+    private static InstantLoad instance = new InstantLoad();
+    
+    private InstantLoad() {
+        id = 0;
+        name = "InstantLoad";
+    }
+    
+    public String getName() {
+        return name;
+    }
     
     public static Object getInstance() {
         return instance;

@@ -20,11 +20,11 @@ public class ThreadLocalTest {
      */
     public static void main(String[] args) {
 
-        // noInitialValue();
+//         noInitialValue();
 
-        // withInitialValue();
+//         withInitialValue();
 
-        // noInitialValueIn();
+//         noInitialValueIn();
 
         withInitialValueIn();
 

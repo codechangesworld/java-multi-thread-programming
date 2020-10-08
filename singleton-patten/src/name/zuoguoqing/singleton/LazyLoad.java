@@ -8,7 +8,10 @@ package name.zuoguoqing.singleton;
  *
  */
 public class LazyLoad {
-    private static Object instance;
+    private static LazyLoad instance;
+    private LazyLoad() {
+        
+    }
 
     // unsafe in multithread
     public static Object getInstance() {
@@ -21,7 +24,7 @@ public class LazyLoad {
             }
             
             // initialize 'instance'
-            instance = new Object();
+            instance = new LazyLoad();
         }
         
         return instance;

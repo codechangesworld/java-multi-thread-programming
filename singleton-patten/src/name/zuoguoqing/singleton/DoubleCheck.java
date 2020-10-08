@@ -8,10 +8,13 @@ package name.zuoguoqing.singleton;
  *
  */
 public class DoubleCheck {
-    volatile private static Object instance;
+    volatile private static DoubleCheck instance;
+    private DoubleCheck() {
+        
+    }
     
     
-    public static Object getInstance() {
+    public static DoubleCheck getInstance() {
         if (instance == null) {
             // do other initialize work
             try {
@@ -23,7 +26,7 @@ public class DoubleCheck {
             // initialize 'instance'
             synchronized (DoubleCheck.class) {
                 if (instance == null) {
-                    instance = new Object();
+                    instance = new DoubleCheck();
                 }
             }
         }

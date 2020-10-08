@@ -26,7 +26,7 @@ public class ProduceTask implements Runnable {
     public void run() {
         System.out.println(Thread.currentThread().getName() + "\tstarting produce...");
         
-        while (true) {
+        while (!Thread.interrupted()) {
             producer.produce();
         }
     }

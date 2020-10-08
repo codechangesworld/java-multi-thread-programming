@@ -29,12 +29,6 @@ public class ProducerConsumerModelUtil {
 
         threadP.start();
         threadC.start();
-
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     /**

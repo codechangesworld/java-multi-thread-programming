@@ -18,10 +18,10 @@ public class JoinThread {
         // commonNotJoin();
 
         // use join
-        // commonJoin();
+         commonJoin();
 
         // timed join
-        commonTimedJoin();
+//        commonTimedJoin();
     }
 
     /**

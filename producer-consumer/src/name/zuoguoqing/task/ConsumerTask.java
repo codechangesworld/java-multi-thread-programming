@@ -23,7 +23,7 @@ public class ConsumerTask implements Runnable {
     public void run() {
         System.out.println(Thread.currentThread().getName() + "\tstarting consume...");
         
-        while (true) {
+        while (!Thread.interrupted()) {
             consumer.consume();
         }
     }

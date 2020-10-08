@@ -6,9 +6,11 @@ package name.zuoguoqing.app;
 import java.util.Random;
 
 import name.zuoguoqing.singleton.DoubleCheck;
+import name.zuoguoqing.singleton.InnerEnum;
 import name.zuoguoqing.singleton.InstantLoad;
 import name.zuoguoqing.singleton.LazyLoad;
 import name.zuoguoqing.singleton.LazyLoadImprove;
+import name.zuoguoqing.singleton.StaticCodeBlock;
 
 /**
  * @author zuoguoqing
@@ -27,7 +29,11 @@ public class Application {
 
         // lazyLoadImprove();
 
-        doubleCheck();
+        // doubleCheck();
+
+        staticCodeBlock();
+
+        // innerEnum();
 
     }
 
@@ -47,8 +53,7 @@ public class Application {
     // right and too simple
     public static void instantLoad() {
         Runnable task = () -> {
-            Object instance = InstantLoad.getInstance();
-            System.out.println(Thread.currentThread().getName() + "\t" + instance);
+            System.out.println(Thread.currentThread().getName() + "\t" + InstantLoad.getInstance());
         };
 
         singletonTest(task);
@@ -57,8 +62,7 @@ public class Application {
     // multithread unsafe
     public static void lazyLoad() {
         Runnable task = () -> {
-            Object instance = LazyLoad.getInstance();
-            System.out.println(Thread.currentThread().getName() + "\t" + instance);
+            System.out.println(Thread.currentThread().getName() + "\t" + LazyLoad.getInstance());
         };
 
         singletonTest(task);
@@ -67,8 +71,8 @@ public class Application {
     // right and low efficiency
     public static void lazyLoadImprove() {
         Runnable task = () -> {
-            Object instance = LazyLoadImprove.getInstance();
-            System.out.println(Thread.currentThread().getName() + "\t" + instance);
+            System.out.println(
+                    Thread.currentThread().getName() + "\t" + LazyLoadImprove.getInstance());
         };
 
         singletonTest(task);
@@ -77,11 +81,25 @@ public class Application {
     // right and efficiency
     public static void doubleCheck() {
         Runnable task = () -> {
-            Object instance = DoubleCheck.getInstance();
-            System.out.println(Thread.currentThread().getName() + "\t" + instance);
+            System.out.println(Thread.currentThread().getName() + "\t" + DoubleCheck.getInstance());
         };
 
         singletonTest(task);
+    }
+
+    // static code block
+    public static void staticCodeBlock() {
+        singletonTest(() -> {
+            System.out.println(
+                    Thread.currentThread().getName() + "\t" + StaticCodeBlock.getInstance());
+        });
+    }
+
+    // enum
+    public static void innerEnum() {
+        singletonTest(() -> {
+            System.out.println(Thread.currentThread().getName() + "\t" + InnerEnum.getInstance());
+        });
     }
 
 }
